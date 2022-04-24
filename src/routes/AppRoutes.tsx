@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LoginScreen } from '../components/auth/LoginScreen';
-import { DashboardScreen } from '../components/dashboard/DashboardScreen';
+import { DashboardRoutes } from './DashboardRoutes';
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 
@@ -17,14 +17,13 @@ export const AppRoutes = () => {
           }
         />
         <Route
-          path="/"
+          path="/*"
           element={
             <PrivateRoutes>
-              <DashboardScreen />
+              <DashboardRoutes />
             </PrivateRoutes>
           }
         />
-        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   );

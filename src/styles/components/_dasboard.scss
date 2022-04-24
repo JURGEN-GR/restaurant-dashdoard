@@ -1,0 +1,10 @@
+.dashboard {
+  display: flex;
+  background-color: $light-grey;
+}
+
+.dashboard__screens {
+  height: 100vh;
+  position: relative;
+  flex: 1;
+}

@@ -11,14 +11,7 @@ export const LoginScreen = () => {
   };
 
   return (
-    <Grid.Container
-      justify="center"
-      alignContent="center"
-      css={{
-        height: '100vh',
-        linearGradient: '45deg, #161616 -20%, #eee 50%',
-      }}
-    >
+    <Grid.Container justify="center" alignContent="center" className="login">
       <Grid>
         <Card
           css={{
@@ -40,7 +33,7 @@ export const LoginScreen = () => {
             contentLeft={<i className="fa-solid fa-lock"></i>}
           />
           <Spacer y={1.5} />
-          <Button css={{ backgroundColor: '#a68069' }} onClick={handleLogin}>
+          <Button className="btn-primary" onClick={handleLogin}>
             Iniciar sesión
           </Button>
         </Card>
