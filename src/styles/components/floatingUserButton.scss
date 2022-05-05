@@ -1,12 +1,14 @@
 .user-button {
   position: absolute;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #fff;
   border-radius: 50px;
-  align-items: center;
   padding: 5px 0px;
   margin-top: 10px;
   right: 30px;
+  min-width: 170px;
 }
 
 .user-button i {
@@ -20,7 +22,6 @@
   bottom: -90px;
   border-radius: 10px;
   background-color: #fff;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,6 +29,7 @@
   padding: 10px;
   padding-left: 20px;
   transition: all 0.4s ease;
+  min-width: 170px;
 }
 
 .user-button__content > * {

@@ -1,18 +1,16 @@
 import { AuthAction } from '../actions/auth';
-import { AuthState } from '../interfaces/auth';
+import { IUser } from '../interfaces/User';
 
 export const authReducer = (
-  state: AuthState,
+  state: IUser | null,
   action: AuthAction
-): AuthState => {
+): IUser | null => {
   switch (action.type) {
     case 'LOGIN':
-      console.log(action.payload);
-
-      return { ...state, ...action.payload };
+      return action.payload;
 
     case 'LOGOUT':
-      return { ...state, user: null };
+      return null;
 
     default:
       return state;

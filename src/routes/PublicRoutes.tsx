@@ -7,6 +7,6 @@ interface Props {
 }
 
 export const PublicRoutes = ({ children }: Props) => {
-  const { user } = useContext(AuthContext).authState;
+  const { user } = useContext(AuthContext);
   return <>{user ? <Navigate to="/" replace={true} /> : children}</>;
 };

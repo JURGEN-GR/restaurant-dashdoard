@@ -1,9 +1,9 @@
 import { createContext } from 'react';
 import { AuthAction } from '../actions/auth';
-import { AuthState } from '../interfaces/auth';
+import { IUser } from '../interfaces/User';
 
 interface AuthContextProps {
-  authState: AuthState;
+  user: IUser | null;
   dispatch: React.Dispatch<AuthAction>;
 }
 

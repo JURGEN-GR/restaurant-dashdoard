@@ -1,7 +1,5 @@
-import { Text } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { NavLink } from './NavLink';
 
 export const Navbar = () => {
@@ -9,7 +7,7 @@ export const Navbar = () => {
   return (
     <motion.nav
       className="navbar"
-      animate={isOpen ? { minWidth: '180px' } : { minWidth: '50px' }}
+      animate={isOpen ? { width: '180px' } : { width: '65px' }}
       transition={{ ease: 'easeInOut', duration: 0.4 }}
     >
       <motion.h1
