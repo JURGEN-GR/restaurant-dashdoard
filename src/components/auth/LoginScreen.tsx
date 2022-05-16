@@ -11,7 +11,7 @@ import {
 
 import { ChangeEvent, useContext, useState } from 'react';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../contexts/auth/AuthContext';
 import { login } from '../../services/auth';
 
 interface formData {
@@ -21,7 +21,7 @@ interface formData {
 
 export const LoginScreen = () => {
   const [formData, setFormData] = useState<formData>({
-    email: 'jorge@gmail.com',
+    email: 'alex@gmail.com',
     password: '123456',
   });
 
@@ -90,8 +90,10 @@ export const LoginScreen = () => {
               onChange={handleChange}
             />
             <Spacer y={1.5} />
-            <Button className="btn-primary" type="submit" disabled={loading}>
-              Iniciar sesión
+            <Button type="submit" disabled={loading}>
+              <Text b color="#fff">
+                Iniciar sesión
+              </Text>
             </Button>
           </form>
         </Card>

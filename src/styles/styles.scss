@@ -1,10 +1,10 @@
 // Base
-@import './base/base';
 @import './base/settings';
+@import './base/base';
 @import './base/normalize';
 
 // Componentes
-@import './components/buttons';
+@import './components/form';
 @import './components/login';
 @import './components/dasboard';
 @import './components/floatingUserButton';

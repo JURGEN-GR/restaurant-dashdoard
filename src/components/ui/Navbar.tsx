@@ -1,12 +1,17 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { NavLink } from './NavLink';
 
-export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+interface Props {
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export const Navbar = ({ isOpen, setIsOpen }: Props) => {
   return (
     <motion.nav
       className="navbar"
+      initial={{ width: '180px' }}
       animate={isOpen ? { width: '180px' } : { width: '65px' }}
       transition={{ ease: 'easeInOut', duration: 0.4 }}
     >
@@ -18,7 +23,7 @@ export const Navbar = () => {
         Logo
       </motion.h1>
       <motion.ul className="navbar__list">
-        <motion.li className="navbar__list-item navbar__list-item-clicked">
+        <motion.li>
           <NavLink
             to="/restaurantes"
             icon="fa-solid fa-shop"
@@ -26,7 +31,7 @@ export const Navbar = () => {
             isOpen={isOpen}
           />
         </motion.li>
-        <motion.li className="navbar__list-item">
+        <motion.li>
           <NavLink
             to="/usuarios"
             icon="fa-solid fa-user-group"
@@ -34,7 +39,7 @@ export const Navbar = () => {
             isOpen={isOpen}
           />
         </motion.li>
-        <motion.li className="navbar__list-item navbar__slide-icon">
+        <motion.li className="navbar__slide-icon">
           <i
             className="fa-solid fa-caret-left navbar__item-icon"
             onClick={() => setIsOpen(!isOpen)}

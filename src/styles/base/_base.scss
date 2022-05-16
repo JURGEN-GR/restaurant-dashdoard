@@ -6,3 +6,15 @@ body {
 * {
   margin: 0px;
 }
+
+.swal2-container {
+  z-index: 99999;
+}
+
+/*  style buttons SweetAlert2 */
+.swal2-cancel {
+  background-color: $red !important;
+}
+.swal2-confirm {
+  background: $primary !important;
+}

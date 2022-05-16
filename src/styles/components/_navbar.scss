@@ -4,6 +4,8 @@
   border-bottom-right-radius: 25px;
   border-top-right-radius: 25px;
   padding: 10px;
+  position: fixed;
+  z-index: 9999;
 }
 
 .navbar__logo {
@@ -18,21 +20,11 @@
   margin: 0;
 }
 
-.navbar__list-item {
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.navbar__list-item-clicked {
-  background-color: #fff;
-  & .navlink {
-    color: $dark-grey;
-  }
-}
-
 .navbar__slide-icon i {
   cursor: pointer;
   color: #fff;
   font-size: 32px;
   line-height: 0;
+  padding: 10px;
+  border-radius: 10px;
 }

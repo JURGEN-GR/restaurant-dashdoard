@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { User } from '@nextui-org/react';
 import { motion } from 'framer-motion';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../contexts/auth/AuthContext';
 import { capitalize } from '../../helpers/capitalize';
 import { IUser } from '../../interfaces/User';
 
@@ -18,11 +18,13 @@ export const FloatingUserButton = () => {
     dispatch({ type: 'LOGOUT' });
   };
 
+  const nameUser = capitalize(user.name.split(' ')[0]);
+
   return (
     <div className="user-button">
       <User
         src={user.picture ? user.picture : './src/assets/imgs/user-default.png'}
-        name={user.name}
+        name={nameUser}
         description={capitalize(user.role.name)}
       />
       <i

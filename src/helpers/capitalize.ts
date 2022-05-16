@@ -1,3 +1,3 @@
 export const capitalize = (word: string): string => {
-  return word.replace(/\b(\w)/g, (s) => s.toUpperCase());
+  return word.replace(/^\w/, (c) => c.toUpperCase());
 };

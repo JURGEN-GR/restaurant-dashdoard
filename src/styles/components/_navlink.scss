@@ -1,6 +1,14 @@
 .navlink {
   color: #fff;
   display: block;
+  padding: 10px;
+  border-radius: 10px;
+  transition: color, background-color, 0.3s ease-out;
+}
+
+.navlink-clicked {
+  background-color: #fff;
+  color: $dark-grey;
 }
 
 .navlink__icon {

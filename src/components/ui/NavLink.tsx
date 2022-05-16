@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink as NavLinkR } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const variantsAnimate = {
@@ -20,17 +20,22 @@ interface NavLinkProps {
 
 export const NavLink = ({ to, icon, text, isOpen }: NavLinkProps) => {
   return (
-    <Link to={to} className="navlink">
+    <NavLinkR
+      to={to}
+      className={({ isActive }) =>
+        'navlink ' + (isActive ? 'navlink-clicked' : '')
+      }
+    >
       <i className={`navlink__icon ${icon}`}></i>
       <motion.span
         className="navlink__text"
-        initial={{ display: 'none' }}
+        initial={{ display: 'inline' }}
         animate={isOpen ? 'open' : 'close'}
         variants={variantsAnimate}
         transition={isOpen ? variantsTransition.open : variantsTransition.close}
       >
         {text}
       </motion.span>
-    </Link>
+    </NavLinkR>
   );
 };

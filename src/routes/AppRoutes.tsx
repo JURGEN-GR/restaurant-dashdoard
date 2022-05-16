@@ -2,7 +2,7 @@ import { Loading } from '@nextui-org/react';
 import { useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LoginScreen } from '../components/auth/LoginScreen';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../contexts/auth/AuthContext';
 import { renewToken } from '../services/auth';
 import { DashboardRoutes } from './DashboardRoutes';
 import { PrivateRoutes } from './PrivateRoutes';
@@ -13,13 +13,14 @@ export const AppRoutes = () => {
   const { dispatch } = useContext(AuthContext);
 
   useEffect(() => {
-    const checkingUser = async () => {
+    (async () => {
       const tokenLocal = localStorage.getItem('token');
       if (tokenLocal) {
         const { user, token } = await renewToken(tokenLocal);
         // Mostrar alerta en caso de error
         if (!user) {
           localStorage.removeItem('token');
+          setChecking(false);
           return;
         }
 
@@ -30,8 +31,7 @@ export const AppRoutes = () => {
         dispatch({ type: 'LOGIN', payload: { ...user } });
       }
       setChecking(false);
-    };
-    checkingUser();
+    })();
   }, []);
 
   if (checking) {
