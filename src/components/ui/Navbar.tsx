@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
+import { AuthContext } from '../../contexts/auth/AuthContext';
 import { NavLink } from './NavLink';
 
 interface Props {
@@ -8,6 +9,9 @@ interface Props {
 }
 
 export const Navbar = ({ isOpen, setIsOpen }: Props) => {
+  const { user } = useContext(AuthContext);
+  const screens = user!.role.screens.map((s) => s.name);
+
   return (
     <motion.nav
       className="navbar"
@@ -23,22 +27,36 @@ export const Navbar = ({ isOpen, setIsOpen }: Props) => {
         Logo
       </motion.h1>
       <motion.ul className="navbar__list">
-        <motion.li>
-          <NavLink
-            to="/restaurantes"
-            icon="fa-solid fa-shop"
-            text="Resturantes"
-            isOpen={isOpen}
-          />
-        </motion.li>
-        <motion.li>
-          <NavLink
-            to="/usuarios"
-            icon="fa-solid fa-user-group"
-            text="Usuarios"
-            isOpen={isOpen}
-          />
-        </motion.li>
+        {screens.includes('restaurantes') && (
+          <motion.li>
+            <NavLink
+              to="/restaurantes"
+              icon="fa-solid fa-shop"
+              text="Resturantes"
+              isOpen={isOpen}
+            />
+          </motion.li>
+        )}
+        {screens.includes('usuarios') && (
+          <motion.li>
+            <NavLink
+              to="/usuarios"
+              icon="fa-solid fa-user-group"
+              text="Usuarios"
+              isOpen={isOpen}
+            />
+          </motion.li>
+        )}
+        {screens.includes('platillos') && (
+          <motion.li>
+            <NavLink
+              to="/platillos"
+              icon="fa-solid fa-user-group"
+              text="Platillos"
+              isOpen={isOpen}
+            />
+          </motion.li>
+        )}
         <motion.li className="navbar__slide-icon">
           <i
             className="fa-solid fa-caret-left navbar__item-icon"

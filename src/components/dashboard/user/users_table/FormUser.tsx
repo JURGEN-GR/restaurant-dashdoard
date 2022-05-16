@@ -1,3 +1,4 @@
+import { ChangeEvent, useContext, useState } from 'react';
 import {
   Button,
   Container,
@@ -6,13 +7,9 @@ import {
   Row,
   Text,
 } from '@nextui-org/react';
-import { ChangeEvent, useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import { UserContext } from '../../../../contexts/user/UserContext';
 import { capitalize } from '../../../../helpers/capitalize';
-import { IDepartment } from '../../../../interfaces/Department';
-import { IRestaurant } from '../../../../interfaces/Restaurant';
-import { IRole } from '../../../../interfaces/Role';
 import { IUser } from '../../../../interfaces/User';
 import { addUser, updateUser } from '../../../../services/user';
 
@@ -58,9 +55,9 @@ export const FormUser = () => {
           email: user.email,
           dateStart: user.dateStart.split('T')[0],
           birthday: user.birthday.split('T')[0],
-          restaurant: (user.restaurant as IRestaurant)._id,
-          role: (user.role as IRole)._id,
-          department: (user.department as IDepartment)._id!,
+          restaurant: user.restaurant._id,
+          role: user.role._id,
+          department: user.department._id,
         }
       : initialState
   );
@@ -100,40 +97,41 @@ export const FormUser = () => {
       errors.email = 'Debe ser un correo valido';
     }
 
-    if (
-      formData.password!.trim().length < 6 ||
-      formData.password2!.trim().length < 6
-    ) {
-      errors.password = 'Debe tener al menos 6 caracteres';
-      errors.password2 = 'Debe tener al menos 6 caracteres';
-    }
+    if (formData.password) {
+      if (
+        formData.password!.trim().length < 6 ||
+        formData.password2!.trim().length < 6
+      ) {
+        errors.password = 'Debe tener al menos 6 caracteres';
+        errors.password2 = 'Debe tener al menos 6 caracteres';
+      }
 
-    // Validar que las contraseñas coincidan
-    if (
-      !errors.password &&
-      !errors.password2 &&
-      formData.password !== formData.password2
-    ) {
-      errors.password = 'Las contraseñas no coinciden';
+      // Validar que las contraseñas coincidan
+      if (
+        !errors.password &&
+        !errors.password2 &&
+        formData.password !== formData.password2
+      ) {
+        errors.password = 'Las contraseñas no coinciden';
+      }
     }
 
     return errors;
   };
 
   const createUser = async () => {
-    // En caso de que se este creando un usuario
-    const userData: IUser = {
-      name: formData.name,
-      email: formData.email,
-      password: formData.password,
-      dateStart: formData.dateStart,
-      birthday: formData.birthday,
-      restaurant: formData.restaurant,
-      role: formData.role,
-      department: formData.department,
-    };
+    // const userData: IUser = {
+    //   name: formData.name,
+    //   email: formData.email,
+    //   password: formData.password,
+    //   dateStart: formData.dateStart,
+    //   birthday: formData.birthday,
+    //   restaurant: formData.restaurant,
+    //   role: formData.role,
+    //   department: formData.department,
+    // };
 
-    const { msg, user } = await addUser(userData);
+    const { msg, user } = await addUser(formData);
     if (!user) {
       Swal.fire('Error', msg, 'error');
       return;
@@ -339,7 +337,7 @@ export const FormUser = () => {
             </option>
             {roles!.map((role) => (
               <option key={role._id} value={role._id}>
-                {capitalize(role.name)}
+                {capitalize(role.name!)}
               </option>
             ))}
           </select>

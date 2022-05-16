@@ -25,7 +25,20 @@ interface UserResponse {
   user: IUser;
 }
 
-export const addUser = async (user: IUser): Promise<UserResponse> => {
+interface IFormData {
+  _id?: string;
+  name: string;
+  email: string;
+  password?: string;
+  password2?: string;
+  dateStart: string;
+  birthday: string;
+  restaurant: string;
+  role: string;
+  department: string;
+}
+
+export const addUser = async (user: IFormData): Promise<UserResponse> => {
   const token = localStorage.getItem('token') || '';
   const response = await fetch(`${baseURL}/user`, {
     method: 'POST',
@@ -39,7 +52,7 @@ export const addUser = async (user: IUser): Promise<UserResponse> => {
   return (await response.json()) as UserResponse;
 };
 
-export const updateUser = async (user: IUser) => {
+export const updateUser = async (user: IFormData) => {
   const token = localStorage.getItem('token') || '';
 
   // Obtenemos el id del usuario y lo eliminamos del objeto
