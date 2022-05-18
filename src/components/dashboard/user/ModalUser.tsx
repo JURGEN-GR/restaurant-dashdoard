@@ -1,5 +1,5 @@
-import { Modal } from '@nextui-org/react';
 import { useContext } from 'react';
+import { Modal } from '@nextui-org/react';
 import { UserContext } from '../../../contexts/user/UserContext';
 import { FormDepartment } from './departments_table/FormDepartment';
 import { ViewDepartment } from './departments_table/ViewDepartment';

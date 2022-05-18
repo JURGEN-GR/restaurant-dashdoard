@@ -1,8 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Button, Loading, Row, Spacer, Table, Text } from '@nextui-org/react';
-import Swal from 'sweetalert2';
 import { AuthContext } from '../../../../contexts/auth/AuthContext';
-import { getUsers } from '../../../../services/user';
 import { UserCells } from './UserCells';
 import { UserContext } from '../../../../contexts/user/UserContext';
 

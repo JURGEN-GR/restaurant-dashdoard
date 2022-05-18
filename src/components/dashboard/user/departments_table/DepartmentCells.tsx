@@ -1,5 +1,5 @@
-import { Col, Row, Text, Tooltip, User } from '@nextui-org/react';
 import { useContext } from 'react';
+import { Col, Row, Text, Tooltip } from '@nextui-org/react';
 import { UserContext } from '../../../../contexts/user/UserContext';
 import { capitalize } from '../../../../helpers/capitalize';
 import { IDepartment } from '../../../../interfaces/Department';

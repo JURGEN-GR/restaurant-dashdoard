@@ -1,17 +1,16 @@
-import { Card, Collapse, Container, Grid } from '@nextui-org/react';
 import { useContext, useEffect } from 'react';
+import { Card, Collapse, Container, Grid } from '@nextui-org/react';
 import Swal from 'sweetalert2';
-import { UserContext } from '../../../contexts/user/UserContext';
-import { UserProvider } from '../../../contexts/user/UserProvider';
-import { getDepartments } from '../../../services/department';
-import { getRestaurants } from '../../../services/restaurant';
-import { getRoles } from '../../../services/role';
-import { getScreens } from '../../../services/screen';
-import { getUsers } from '../../../services/user';
-import { DepartmentTable } from './departments_table/DepartmentsTable';
-import { ModalUser } from './ModalUser';
-import { RolesTable } from './roles_table/RolesTable';
-import { UsersTable } from './users_table/UsersTable';
+import { UserContext } from '../contexts/user/UserContext';
+import { getDepartments } from '../services/department';
+import { getRestaurants } from '../services/restaurant';
+import { getRoles } from '../services/role';
+import { getScreens } from '../services/screen';
+import { getUsers } from '../services/user';
+import { DepartmentTable } from '../components/dashboard/user/departments_table/DepartmentsTable';
+import { ModalUser } from '../components/dashboard/user/ModalUser';
+import { RolesTable } from '../components/dashboard/user/roles_table/RolesTable';
+import { UsersTable } from '../components/dashboard/user/users_table/UsersTable';
 
 export const UserScreen = () => {
   const { setUsers, setDepartments, setRoles, setRestaurants, setScreens } =

@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useContext } from 'react';
+import { motion } from 'framer-motion';
 import { AuthContext } from '../../contexts/auth/AuthContext';
 import { NavLink } from './NavLink';
 

@@ -1,9 +1,6 @@
+import { useContext } from 'react';
 import { Button, Loading, Row, Spacer, Table, Text } from '@nextui-org/react';
-import { useContext, useEffect } from 'react';
-import Swal from 'sweetalert2';
 import { UserContext } from '../../../../contexts/user/UserContext';
-import { getDepartments } from '../../../../services/department';
-import { getRoles } from '../../../../services/role';
 import { DepartmentCells } from './DepartmentCells';
 
 type keyColumn = '_id' | 'name';

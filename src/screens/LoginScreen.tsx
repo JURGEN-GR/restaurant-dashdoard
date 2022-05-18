@@ -1,3 +1,4 @@
+import { ChangeEvent, useContext, useState } from 'react';
 import {
   Card,
   Grid,
@@ -6,13 +7,11 @@ import {
   Spacer,
   Text,
   FormElement,
-  Loading,
 } from '@nextui-org/react';
 
-import { ChangeEvent, useContext, useState } from 'react';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../contexts/auth/AuthContext';
-import { login } from '../../services/auth';
+import { AuthContext } from '../contexts/auth/AuthContext';
+import { login } from '../services/auth';
 
 interface formData {
   email: string;

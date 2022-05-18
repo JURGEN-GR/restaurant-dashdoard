@@ -1,5 +1,5 @@
-import { Container, Text } from '@nextui-org/react';
 import { useContext } from 'react';
+import { Container, Text } from '@nextui-org/react';
 import { UserContext } from '../../../../contexts/user/UserContext';
 import { capitalize } from '../../../../helpers/capitalize';
 import { IDepartment } from '../../../../interfaces/Department';

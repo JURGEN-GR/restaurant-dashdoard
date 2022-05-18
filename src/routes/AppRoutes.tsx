@@ -1,7 +1,7 @@
-import { Loading } from '@nextui-org/react';
 import { useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { LoginScreen } from '../components/auth/LoginScreen';
+import { Loading } from '@nextui-org/react';
+import { LoginScreen } from '../screens/LoginScreen';
 import { AuthContext } from '../contexts/auth/AuthContext';
 import { renewToken } from '../services/auth';
 import { DashboardRoutes } from './DashboardRoutes';

@@ -1,4 +1,4 @@
-import { Link, NavLink as NavLinkR } from 'react-router-dom';
+import { NavLink as NavLinkR } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const variantsAnimate = {

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Card, Col, Container, Row, Text } from '@nextui-org/react';
+import { Container, Text } from '@nextui-org/react';
 import { UserContext } from '../../../../contexts/user/UserContext';
 import { IUser } from '../../../../interfaces/User';
 import { capitalize } from '../../../../helpers/capitalize';
@@ -35,7 +35,7 @@ export const ViewUser = () => {
         <b>Departamento:</b> {capitalize((user.department as IDepartment).name)}
       </Text>
       <Text size={'18px'} css={{ width: '100%', textAlign: 'center' }}>
-        <b>Rol:</b> {capitalize((user.role as IRole).name)}
+        <b>Rol:</b> {capitalize((user.role as IRole).name!)}
       </Text>
       <Text size={'18px'} css={{ width: '100%', textAlign: 'center' }}>
         <b>Restaurante:</b>{' '}

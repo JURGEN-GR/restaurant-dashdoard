@@ -1,5 +1,5 @@
-import { Col, Row, Text, Tooltip, User } from '@nextui-org/react';
 import { useContext } from 'react';
+import { Col, Row, Text, Tooltip } from '@nextui-org/react';
 import { UserContext } from '../../../../contexts/user/UserContext';
 import { capitalize } from '../../../../helpers/capitalize';
 import { IRole } from '../../../../interfaces/Role';
@@ -21,7 +21,7 @@ export const RoleCells = (role: IRole, columnKey: string) => {
 
   switch (columnKey) {
     case 'name':
-      return <Text>{capitalize(role.name)}</Text>;
+      return <Text>{capitalize(role.name!)}</Text>;
 
     case 'actions':
       return (

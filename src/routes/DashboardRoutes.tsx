@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { RestaurantScreen } from '../components/dashboard/restaurant/RestaurantScreen';
-import { UserScreen } from '../components/dashboard/user/UserScreen';
-import { FoodScreen } from '../components/dashboard/food/FoodScreen';
+import { RestaurantScreen } from '../screens/RestaurantScreen';
+import { UserScreen } from '../screens/UserScreen';
+import { FoodScreen } from '../screens/FoodScreen';
 import { Navbar } from '../components/ui/Navbar';
 import { FloatingUserButton } from '../components/ui/FloatingUserButton';
 import { UserProvider } from '../contexts/user/UserProvider';
@@ -16,6 +16,13 @@ export const DashboardRoutes = () => {
 
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
+  const handleLogout = () => {
+    // Remove token del localStorage
+    localStorage.removeItem('token');
+    // Actualizar el state del contexto con el usuario
+    dispatch({ type: 'LOGOUT' });
+  };
+
   return screens.length === 0 ? (
     <div
       style={{
@@ -27,9 +34,7 @@ export const DashboardRoutes = () => {
       }}
     >
       <h2>No tienes permisos para usar panel</h2>
-      <Button onClick={() => dispatch({ type: 'LOGOUT' })}>
-        Cerrar sesión
-      </Button>
+      <Button onClick={handleLogout}>Cerrar sesión</Button>
     </div>
   ) : (
     <div className="dashboard">
