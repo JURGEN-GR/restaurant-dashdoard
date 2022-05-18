@@ -1,5 +1,4 @@
 import { Button, Card, Container, Row, Spacer } from '@nextui-org/react';
-import { ModalRestaurant } from '../components/dashboard/restaurant/ModalRestaurant';
 
 export const RestaurantScreen = () => {
   return (
@@ -19,7 +18,6 @@ export const RestaurantScreen = () => {
           </select>
         </Row>
       </Card>
-      <ModalRestaurant />
     </Container>
   );
 };
