@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { RestaurantScreen } from '../components/dashboard/RestaurantScreen';
+import { RestaurantScreen } from '../components/dashboard/restaurant/RestaurantScreen';
 import { UserScreen } from '../components/dashboard/user/UserScreen';
-import { FoodScreen } from '../components/dashboard/FoodScreen';
+import { FoodScreen } from '../components/dashboard/food/FoodScreen';
 import { Navbar } from '../components/ui/Navbar';
 import { FloatingUserButton } from '../components/ui/FloatingUserButton';
 import { UserProvider } from '../contexts/user/UserProvider';

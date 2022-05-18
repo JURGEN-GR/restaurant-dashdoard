@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { AuthAction } from '../../actions/auth';
 import { IUser } from '../../interfaces/User';
+import { AuthAction } from './authReducer';
 
 interface AuthContextProps {
   user: IUser | null;

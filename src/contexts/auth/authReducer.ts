@@ -1,5 +1,6 @@
-import { AuthAction } from '../actions/auth';
-import { IUser } from '../interfaces/User';
+import { IUser } from '../../interfaces/User';
+
+export type AuthAction = { type: 'LOGIN'; payload: IUser } | { type: 'LOGOUT' };
 
 export const authReducer = (
   state: IUser | null,
