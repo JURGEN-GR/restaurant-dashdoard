@@ -20,8 +20,8 @@ interface formData {
 
 export const LoginScreen = () => {
   const [formData, setFormData] = useState<formData>({
-    email: 'alex@gmail.com',
-    password: '123456',
+    email: '',
+    password: '',
   });
 
   const [loading, setLoading] = useState<boolean>(false);
