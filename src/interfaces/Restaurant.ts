@@ -1,5 +1,5 @@
 export interface IRestaurant {
-  _id: string;
+  _id?: string;
   lat: number;
   lng: number;
   location: string;

@@ -9,12 +9,13 @@ import { FloatingUserButton } from '../components/ui/FloatingUserButton';
 import { UserProvider } from '../contexts/user/UserProvider';
 import { AuthContext } from '../contexts/auth/AuthContext';
 import { Button } from '@nextui-org/react';
+import { RestaurantProvider } from '../contexts/restaurant/RestaurantProvider';
 
 export const DashboardRoutes = () => {
   const { user, dispatch } = useContext(AuthContext);
   const screens = user!.role.screens.map((s) => s.name);
 
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleLogout = () => {
     // Remove token del localStorage
@@ -45,7 +46,7 @@ export const DashboardRoutes = () => {
           paddingTop: '110px',
           paddingBottom: '110px',
         }}
-        initial={{ paddingLeft: '180px' }}
+        initial={{ paddingLeft: '65px' }}
         animate={isOpen ? { paddingLeft: '180px' } : { paddingLeft: '65px' }}
         transition={{ ease: 'easeInOut', duration: 0.4 }}
       >
@@ -53,7 +54,14 @@ export const DashboardRoutes = () => {
         <Routes>
           <Route path="/" element={<Navigate to={`/${screens[0]}`} />} />
           {screens.includes('restaurantes') && (
-            <Route path="/restaurantes" element={<RestaurantScreen />} />
+            <Route
+              path="/restaurantes"
+              element={
+                <RestaurantProvider>
+                  <RestaurantScreen />
+                </RestaurantProvider>
+              }
+            />
           )}
           {screens.includes('usuarios') && (
             <Route

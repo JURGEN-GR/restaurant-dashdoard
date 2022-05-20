@@ -15,12 +15,13 @@ export const Navbar = ({ isOpen, setIsOpen }: Props) => {
   return (
     <motion.nav
       className="navbar"
-      initial={{ width: '180px' }}
+      initial={{ width: '65px' }}
       animate={isOpen ? { width: '180px' } : { width: '65px' }}
       transition={{ ease: 'easeInOut', duration: 0.4 }}
     >
       <motion.h1
         className="navbar__logo"
+        initial={{ fontSize: '22px' }}
         animate={{ fontSize: isOpen ? '32px' : '22px' }}
         transition={{ ease: 'easeInOut', duration: 0.4 }}
       >

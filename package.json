@@ -10,12 +10,14 @@
   "dependencies": {
     "@nextui-org/react": "^1.0.8-beta.5",
     "framer-motion": "^6.3.0",
+    "mapbox-gl": "^2.8.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "sweetalert2": "^11.4.10"
   },
   "devDependencies": {
+    "@types/mapbox-gl": "^2.7.1",
     "@types/node": "^17.0.31",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
