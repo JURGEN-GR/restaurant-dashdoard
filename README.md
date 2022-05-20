@@ -1,4 +1,4 @@
-# Dashboard administrativo con ReactJS
+# Dashboard administrativo con ReactJS + Typescript + Sass
 
 ## Descripción breve del proyecto
 
