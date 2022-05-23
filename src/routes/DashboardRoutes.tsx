@@ -3,13 +3,14 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { RestaurantScreen } from '../screens/RestaurantScreen';
 import { UserScreen } from '../screens/UserScreen';
-import { FoodScreen } from '../screens/FoodScreen';
+import { DishScreen } from '../screens/DishScreen';
 import { Navbar } from '../components/ui/Navbar';
 import { FloatingUserButton } from '../components/ui/FloatingUserButton';
 import { UserProvider } from '../contexts/user/UserProvider';
 import { AuthContext } from '../contexts/auth/AuthContext';
 import { Button } from '@nextui-org/react';
 import { RestaurantProvider } from '../contexts/restaurant/RestaurantProvider';
+import { DishProvider } from '../contexts/dish/DishProvider';
 
 export const DashboardRoutes = () => {
   const { user, dispatch } = useContext(AuthContext);
@@ -74,7 +75,14 @@ export const DashboardRoutes = () => {
             />
           )}
           {screens.includes('platillos') && (
-            <Route path="/platillos" element={<FoodScreen />} />
+            <Route
+              path="/platillos"
+              element={
+                <DishProvider>
+                  <DishScreen />
+                </DishProvider>
+              }
+            />
           )}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

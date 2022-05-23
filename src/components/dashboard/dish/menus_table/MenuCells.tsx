@@ -1,27 +1,29 @@
 import { useContext } from 'react';
 import { Col, Row, Text, Tooltip } from '@nextui-org/react';
-import { UserContext } from '../../../../contexts/user/UserContext';
+import { DishContext } from '../../../../contexts/dish/DishContext';
 import { capitalize } from '../../../../helpers/capitalize';
-import { IRole } from '../../../../interfaces/Role';
+import { IMenu } from '../../../../interfaces/Dish';
 
-export const RoleCells = (role: IRole, columnKey: string) => {
-  const { setOpen, setItemSelected, setTypeForm } = useContext(UserContext);
+export const MenuCells = (menu: IMenu, columnKey: string) => {
+  const { dispatch } = useContext(DishContext);
 
   const handleEdit = () => {
-    setTypeForm('role');
-    setItemSelected(role);
-    setOpen(true);
+    dispatch({
+      type: 'setOpen',
+      payload: { open: true, typeForm: 'menu', itemSelected: menu },
+    });
   };
 
   const handleView = () => {
-    setTypeForm('viewRole');
-    setItemSelected(role);
-    setOpen(true);
+    dispatch({
+      type: 'setOpen',
+      payload: { open: true, typeForm: 'viewMenu', itemSelected: menu },
+    });
   };
 
   switch (columnKey) {
     case 'name':
-      return <Text>{capitalize(role.name!)}</Text>;
+      return <Text>{capitalize(menu.name!)}</Text>;
 
     case 'actions':
       return (
@@ -36,7 +38,7 @@ export const RoleCells = (role: IRole, columnKey: string) => {
             </Tooltip>
           </Col>
           <Col css={{ d: 'flex' }}>
-            <Tooltip content="Editar rol">
+            <Tooltip content="Editar menú">
               <i
                 className="fa-solid fa-pencil icon-btn"
                 style={{ color: '#979797' }}

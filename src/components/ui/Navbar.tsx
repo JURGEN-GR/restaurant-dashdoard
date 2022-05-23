@@ -52,7 +52,7 @@ export const Navbar = ({ isOpen, setIsOpen }: Props) => {
           <motion.li>
             <NavLink
               to="/platillos"
-              icon="fa-solid fa-user-group"
+              icon="fa-solid fa-utensils"
               text="Platillos"
               isOpen={isOpen}
             />

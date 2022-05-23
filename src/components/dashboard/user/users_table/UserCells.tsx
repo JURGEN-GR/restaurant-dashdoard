@@ -86,6 +86,15 @@ export const UserCells = (
         </Col>
       );
 
+    case 'restaurant':
+      return (
+        <Text>
+          {user.restaurant
+            ? capitalize((user.restaurant as IRestaurant).location)
+            : 'Sin restaurant'}
+        </Text>
+      );
+
     case 'actions':
       return (
         <Row justify="center" align="center">
@@ -128,11 +137,6 @@ export const UserCells = (
             </Tooltip>
           </Col>
         </Row>
-      );
-
-    case 'restaurant':
-      return (
-        <Text>{capitalize((user.restaurant as IRestaurant).location)}</Text>
       );
   }
 };

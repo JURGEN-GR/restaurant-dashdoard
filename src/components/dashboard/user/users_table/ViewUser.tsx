@@ -32,14 +32,20 @@ export const ViewUser = () => {
         <b>Fecha de inicio:</b> {user.dateStart.split('T')[0]}
       </Text>
       <Text size={'18px'} css={{ width: '100%', textAlign: 'center' }}>
-        <b>Departamento:</b> {capitalize((user.department as IDepartment).name)}
+        <b>Departamento:</b>{' '}
+        {user.department
+          ? capitalize((user.department as IDepartment).name)
+          : 'Sin departamento'}
       </Text>
       <Text size={'18px'} css={{ width: '100%', textAlign: 'center' }}>
-        <b>Rol:</b> {capitalize((user.role as IRole).name!)}
+        <b>Rol:</b>{' '}
+        {user.role ? capitalize((user.role as IRole).name!) : 'Sin rol'}
       </Text>
       <Text size={'18px'} css={{ width: '100%', textAlign: 'center' }}>
         <b>Restaurante:</b>{' '}
-        {capitalize((user.restaurant as IRestaurant).location)}
+        {user.restaurant
+          ? capitalize((user.restaurant as IRestaurant).location)
+          : 'Sin restaurante'}
       </Text>
     </Container>
   );

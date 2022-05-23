@@ -55,9 +55,9 @@ export const FormUser = () => {
           email: user.email,
           dateStart: user.dateStart.split('T')[0],
           birthday: user.birthday.split('T')[0],
-          restaurant: user.restaurant._id,
-          role: user.role._id,
-          department: user.department._id,
+          restaurant: user.restaurant?._id || '',
+          role: user.role._id || '',
+          department: user.department._id || '',
         }
       : initialState
   );
