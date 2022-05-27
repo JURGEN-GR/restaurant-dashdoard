@@ -7,7 +7,7 @@ interface DishContextProps {
   menus: IMenu[];
   isLoadingTables: boolean;
   open: boolean;
-  typeForm: 'dish' | 'viewDish' | 'menu' | 'viewMenu' | '';
+  typeForm: 'dish' | 'viewDish' | 'viewDishImages' | 'menu' | 'viewMenu' | '';
   itemSelected?: IDish | IMenu;
   dispatch: Dispatch<DishAction>;
 }

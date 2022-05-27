@@ -5,6 +5,7 @@ import { FormMenu } from './menus_table/FormMenu';
 import { ViewMenu } from './menus_table/ViewMenu';
 import { FormDish } from './dishes_table/FormDish';
 import { ViewDish } from './dishes_table/ViewDish';
+import { ViewDishImages } from './dishes_table/ViewDishImages';
 
 export const ModalDish = () => {
   // setOpen, setItemSelected, typeForm, setTypeForm
@@ -20,7 +21,7 @@ export const ModalDish = () => {
   return (
     <Modal
       width="max-content"
-      css={{ padding: '30px', maxHeight: '570px', overflowY: 'scroll' }}
+      css={{ padding: '30px', maxHeight: '585px', overflowY: 'scroll' }}
       open={open}
       closeButton
       preventClose
@@ -30,6 +31,7 @@ export const ModalDish = () => {
       {typeForm === 'viewMenu' && <ViewMenu />}
       {typeForm === 'dish' && <FormDish />}
       {typeForm === 'viewDish' && <ViewDish />}
+      {typeForm === 'viewDishImages' && <ViewDishImages />}
     </Modal>
   );
 };

@@ -1,8 +1,10 @@
 import { Col, Row, Text, Tooltip } from '@nextui-org/react';
 import { useContext } from 'react';
+import Swal from 'sweetalert2';
 import { DishContext } from '../../../../contexts/dish/DishContext';
 import { capitalize } from '../../../../helpers/capitalize';
 import { IDish } from '../../../../interfaces/Dish';
+import { deleteDish } from '../../../../services/dish';
 
 export const DishCells = (dish: IDish, columnKey: string) => {
   const { dispatch } = useContext(DishContext);
@@ -21,7 +23,35 @@ export const DishCells = (dish: IDish, columnKey: string) => {
     });
   };
 
-  const handleDelete = () => {};
+  const handleViewImages = () => {
+    dispatch({
+      type: 'setOpen',
+      payload: { open: true, typeForm: 'viewDishImages', itemSelected: dish },
+    });
+  };
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir esto',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then(async (result) => {
+      if (result.value) {
+        // Eliminar platillo
+        const { msg, dish: deletedDish } = await deleteDish(dish._id!);
+        if (!deletedDish) {
+          Swal.fire('Error', msg, 'error');
+          return;
+        }
+        Swal.fire('Eliminado', 'El usuario ha sido eliminado', 'success');
+        // Eliminar platillo de la lista
+        dispatch({ type: 'deleteDish', payload: deletedDish });
+      }
+    });
+  };
 
   switch (columnKey) {
     case 'name':
@@ -47,6 +77,15 @@ export const DishCells = (dish: IDish, columnKey: string) => {
     case 'actions':
       return (
         <Row justify="center" align="center">
+          <Col css={{ d: 'flex' }}>
+            <Tooltip content="Ver imágenes">
+              <i
+                className="fa-solid fa-images"
+                style={{ color: '#979797', cursor: 'pointer' }}
+                onClick={handleViewImages}
+              ></i>
+            </Tooltip>
+          </Col>
           <Col css={{ d: 'flex' }}>
             <Tooltip content="Ver información">
               <i

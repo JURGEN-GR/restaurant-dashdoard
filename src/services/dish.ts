@@ -29,7 +29,7 @@ export interface IForm {
   _id?: string;
   name: string;
   menu: string;
-  price: number;
+  price: string;
   description: string;
 }
 
@@ -61,6 +61,59 @@ export const updateDish = async (dish: IForm): Promise<DishResponse> => {
       'x-token': token,
     },
     body: JSON.stringify(dish),
+  });
+
+  return (await response.json()) as DishResponse;
+};
+
+export const uploadFileDish = async (
+  file: File,
+  _id: string
+): Promise<DishResponse> => {
+  const token = localStorage.getItem('token') || '';
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const response = await fetch(`${baseURL}/uploads/dish/${_id}`, {
+    method: 'POST',
+    headers: {
+      'x-token': token,
+    },
+    body: formData,
+  });
+
+  return (await response.json()) as DishResponse;
+};
+
+// Elminar archivo
+export const deleteFileDish = async (
+  _id: string,
+  url: string
+): Promise<DishResponse> => {
+  const token = localStorage.getItem('token') || '';
+
+  const response = await fetch(`${baseURL}/uploads/dish/${_id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-token': token,
+    },
+    body: JSON.stringify({ url }),
+  });
+
+  return (await response.json()) as DishResponse;
+};
+
+// Eliminar un platillo
+export const deleteDish = async (_id: string): Promise<DishResponse> => {
+  const token = localStorage.getItem('token') || '';
+
+  const response = await fetch(`${baseURL}/dish/${_id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-token': token,
+    },
   });
 
   return (await response.json()) as DishResponse;

@@ -5,6 +5,7 @@ export type DishAction =
   | { type: 'setDishes'; payload: IDish[] }
   | { type: 'addDish'; payload: IDish }
   | { type: 'updateDish'; payload: IDish }
+  | { type: 'deleteDish'; payload: IDish }
   | { type: 'setMenus'; payload: IMenu[] }
   | { type: 'addMenu'; payload: IMenu }
   | { type: 'updateMenu'; payload: IMenu }
@@ -13,7 +14,13 @@ export type DishAction =
       type: 'setOpen';
       payload: {
         open: boolean;
-        typeForm: 'dish' | 'viewDish' | 'menu' | 'viewMenu' | '';
+        typeForm:
+          | 'dish'
+          | 'viewDish'
+          | 'viewDishImages'
+          | 'menu'
+          | 'viewMenu'
+          | '';
         itemSelected?: IDish | IMenu;
       };
     };
@@ -34,6 +41,11 @@ export const dishReducer = (
         dishes: state.dishes.map((dish) =>
           dish._id === action.payload._id ? action.payload : dish
         ),
+      };
+    case 'deleteDish':
+      return {
+        ...state,
+        dishes: state.dishes.filter((dish) => dish._id !== action.payload._id),
       };
 
     // Acciones de los menus

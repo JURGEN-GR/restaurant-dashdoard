@@ -45,7 +45,11 @@ export const UserCells = (
       }).then(async (result) => {
         if (result.value) {
           // Eliminar usuario
-          await deleteUser(user._id!);
+          const { msg, user: newUser } = await deleteUser(user._id!);
+          if (!newUser) {
+            Swal.fire('Error', msg, 'error');
+            return;
+          }
           Swal.fire('Eliminado', 'El usuario ha sido eliminado', 'success');
           // Eliminar usuario de la lista
           setUsers((users) => users!.filter((u) => u._id !== user._id));

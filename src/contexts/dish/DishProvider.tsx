@@ -12,7 +12,7 @@ export interface DishState {
   menus: IMenu[];
   isLoadingTables: boolean;
   open: boolean;
-  typeForm: 'dish' | 'viewDish' | 'menu' | 'viewMenu' | '';
+  typeForm: 'dish' | 'viewDish' | 'viewDishImages' | 'menu' | 'viewMenu' | '';
   itemSelected?: IDish | IMenu;
 }
 

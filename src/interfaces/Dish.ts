@@ -3,7 +3,7 @@ export interface IDish {
   description: string;
   menu: IMenu;
   price: number;
-  media_library: any[];
+  media_library: string[];
   _id?: string;
 }
 

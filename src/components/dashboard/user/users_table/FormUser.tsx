@@ -83,7 +83,7 @@ export const FormUser = () => {
         errors[key as typesForm] = 'El campo es requerido';
       }
 
-      // Validar que el campo sea mayor a 5 caracteres
+      // Validar que el campo sea mayor a 4 caracteres
       if (value?.trim().length! >= 1 && value?.trim().length! < 4) {
         errors[key as typesForm] = 'Debe tener al menos 4 caracteres';
       }
