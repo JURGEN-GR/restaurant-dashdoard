@@ -13,8 +13,14 @@ import { RolesTable } from '../components/dashboard/user/roles_table/RolesTable'
 import { UsersTable } from '../components/dashboard/user/users_table/UsersTable';
 
 export const UserScreen = () => {
-  const { setUsers, setDepartments, setRoles, setRestaurants, setScreens } =
-    useContext(UserContext);
+  const {
+    setUsers,
+    setDepartments,
+    setRoles,
+    setRestaurants,
+    setScreens,
+    setIsLoadingTables,
+  } = useContext(UserContext);
   useEffect(() => {
     (async () => {
       const [
@@ -44,6 +50,7 @@ export const UserScreen = () => {
       if (!screensResponse.screens)
         Swal.fire('Error', screensResponse.msg, 'error');
       setScreens(screensResponse.screens);
+      setIsLoadingTables(false);
     })();
   }, []);
 

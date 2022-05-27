@@ -30,6 +30,8 @@ export const UserProvider = ({ children }: AuthProviderProps) => {
   const [restaurants, setRestaurants] = useState<IRestaurant[] | null>(null);
   const [screens, setScreens] = useState<IScreen[] | null>(null);
 
+  const [isLoadingTables, setIsLoadingTables] = useState<boolean>(true);
+
   const [typeForm, setTypeForm] = useState<formTypes>(null);
 
   const values = {
@@ -49,6 +51,8 @@ export const UserProvider = ({ children }: AuthProviderProps) => {
     setTypeForm,
     screens,
     setScreens,
+    isLoadingTables,
+    setIsLoadingTables,
   };
 
   return (

@@ -33,6 +33,8 @@ interface UserContextProps {
   setScreens: React.Dispatch<SetStateAction<IScreen[] | null>>;
   typeForm: formTypes;
   setTypeForm: React.Dispatch<SetStateAction<formTypes>>;
+  isLoadingTables: boolean;
+  setIsLoadingTables: React.Dispatch<SetStateAction<boolean>>;
 }
 
 export const UserContext = createContext<UserContextProps>(

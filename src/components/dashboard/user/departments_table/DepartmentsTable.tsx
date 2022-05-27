@@ -22,7 +22,8 @@ const columns = [
 ];
 
 export const DepartmentTable = () => {
-  const { departments, setOpen, setTypeForm } = useContext(UserContext);
+  const { departments, setOpen, setTypeForm, isLoadingTables } =
+    useContext(UserContext);
 
   const handleOpenForm = () => {
     setOpen(true);
@@ -32,7 +33,7 @@ export const DepartmentTable = () => {
   return (
     <>
       <Row css={{ marginBottom: '20px' }}>
-        {departments && (
+        {!isLoadingTables && (
           <Button
             iconRight={<i className="fa-solid fa-circle-plus"></i>}
             style={{ fontWeight: 'bold', fontSize: '15px', width: '100%' }}
@@ -42,13 +43,13 @@ export const DepartmentTable = () => {
           </Button>
         )}
       </Row>
-      {!departments ? (
+      {isLoadingTables ? (
         <Row justify="center" align="center">
           <Text h3>Cargando Tabla</Text>
           <Spacer />
           <Loading />
         </Row>
-      ) : (
+      ) : departments && departments.length !== 0 ? (
         <Table
           lined
           shadow={false}
@@ -76,6 +77,10 @@ export const DepartmentTable = () => {
           </Table.Body>
           <Table.Pagination shadow noMargin align="center" rowsPerPage={4} />
         </Table>
+      ) : (
+        <Text h4 css={{ textAlign: 'center' }}>
+          Aun no hay registros
+        </Text>
       )}
     </>
   );

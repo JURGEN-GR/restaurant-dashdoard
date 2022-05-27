@@ -42,7 +42,8 @@ const columns = [
 
 export const UsersTable = () => {
   const { user: currentUser } = useContext(AuthContext);
-  const { users, setOpen, setTypeForm } = useContext(UserContext);
+  const { users, setOpen, setTypeForm, isLoadingTables } =
+    useContext(UserContext);
 
   const handleOpenForm = () => {
     setOpen(true);
@@ -54,7 +55,7 @@ export const UsersTable = () => {
       <Text h3 css={{ marginBottom: '20px' }}>
         Usuarios
       </Text>
-      {users && (
+      {!isLoadingTables && (
         <Row css={{ marginBottom: '20px' }}>
           <Button
             iconRight={<i className="fa-solid fa-circle-plus"></i>}
@@ -65,13 +66,13 @@ export const UsersTable = () => {
           </Button>
         </Row>
       )}
-      {!users ? (
+      {isLoadingTables ? (
         <Row justify="center" align="center">
           <Text h3>Cargando Tabla</Text>
           <Spacer />
           <Loading />
         </Row>
-      ) : (
+      ) : users && users.length !== 0 ? (
         <Table
           lined
           shadow={false}
@@ -98,6 +99,10 @@ export const UsersTable = () => {
           </Table.Body>
           <Table.Pagination shadow noMargin align="center" rowsPerPage={4} />
         </Table>
+      ) : (
+        <Text h4 css={{ textAlign: 'center' }}>
+          Aun no hay registros
+        </Text>
       )}
     </>
   );

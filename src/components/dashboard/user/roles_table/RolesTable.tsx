@@ -22,7 +22,8 @@ const columns = [
 ];
 
 export const RolesTable = () => {
-  const { roles, setOpen, setTypeForm } = useContext(UserContext);
+  const { roles, setOpen, setTypeForm, isLoadingTables } =
+    useContext(UserContext);
 
   const handleOpenForm = () => {
     setOpen(true);
@@ -32,7 +33,7 @@ export const RolesTable = () => {
   return (
     <>
       <Row css={{ marginBottom: '20px' }}>
-        {roles && (
+        {!isLoadingTables && (
           <Button
             iconRight={<i className="fa-solid fa-circle-plus"></i>}
             style={{ fontWeight: 'bold', fontSize: '15px', width: '100%' }}
@@ -42,13 +43,13 @@ export const RolesTable = () => {
           </Button>
         )}
       </Row>
-      {!roles ? (
+      {isLoadingTables ? (
         <Row justify="center" align="center">
           <Text h3>Cargando Tabla</Text>
           <Spacer />
           <Loading />
         </Row>
-      ) : (
+      ) : roles && roles.length !== 0 ? (
         <Table
           lined
           shadow={false}
@@ -74,6 +75,10 @@ export const RolesTable = () => {
           </Table.Body>
           <Table.Pagination shadow noMargin align="center" rowsPerPage={4} />
         </Table>
+      ) : (
+        <Text h4 css={{ textAlign: 'center' }}>
+          Aun no hay registros
+        </Text>
       )}
     </>
   );
