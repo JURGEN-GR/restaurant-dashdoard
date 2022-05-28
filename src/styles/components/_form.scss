@@ -52,3 +52,16 @@ select {
     transition: color 0.3s ease;
   }
 }
+
+.input-edit {
+  border: none;
+  border-bottom: solid 1px #333;
+}
+
+.input-disabled {
+  border: none;
+}
+
+.user-config-label {
+  margin-right: 10px;
+}
