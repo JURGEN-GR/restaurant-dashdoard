@@ -13,7 +13,7 @@ Este proyecto funciona con el siguiente backend: <https://github.com/JURGEN-GR/r
 
 ## Importante!!
 
-Para que las variables de entorno carguen es necesario que cree los siguientes archivos y las coloque ahí.
+Para que las variables de entorno carguen es necesario que cree los siguientes archivos y las coloque ahí, (se dejo un archivo de ejemplo).
 
 - .env.development
 - .env.production
