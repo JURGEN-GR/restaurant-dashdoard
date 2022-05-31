@@ -36,7 +36,9 @@ export const DashboardRoutes = () => {
       }}
     >
       <h2>No tienes permisos para usar panel</h2>
-      <Button onClick={handleLogout}>Cerrar sesión</Button>
+      <Button onClick={handleLogout} css={{ fontWeight: '$bold' }}>
+        Cerrar sesión
+      </Button>
     </div>
   ) : (
     <div className="dashboard">

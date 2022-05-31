@@ -187,7 +187,9 @@ export const FormUserConfig = ({ setIsOpenModal }: Props) => {
         }}
       >
         <img
-          src={user ? user.picture! : './src/assets/imgs/user-default.png'}
+          src={
+            user!.picture ? user!.picture : './src/assets/imgs/user-default.png'
+          }
           style={{
             width: '200px',
             height: '200px',

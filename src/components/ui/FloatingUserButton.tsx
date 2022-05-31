@@ -28,7 +28,9 @@ export const FloatingUserButton = () => {
     <>
       <div className="user-button">
         <User
-          src={user ? user.picture : './src/assets/imgs/user-default.png'}
+          src={
+            user?.picture ? user.picture : './src/assets/imgs/user-default.png'
+          }
           name={capitalize(user!.name.split(' ')[0])}
           description={capitalize(user!.role.name)}
         />

@@ -42,6 +42,9 @@ export const DishesTable = () => {
 
   return (
     <>
+      <Text h3 css={{ marginBottom: '20px' }}>
+        Platillos
+      </Text>
       <Row css={{ marginBottom: '20px' }}>
         {!isLoadingTables && (
           <Button
